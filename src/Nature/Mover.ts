@@ -1,4 +1,4 @@
-import Vector from './Vecter';
+import Vector from './Vector';
 
 export interface MoverProps {
   position?: Vector; // 向量坐标

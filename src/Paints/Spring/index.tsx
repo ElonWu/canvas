@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import Canvas from '@/Canvas';
 import Brush, { ArcPath, StyleOptions } from '@/Canvas/Brush';
 import Ball from '@/Nature/Ball';
-import Vector from '@/Nature/Vecter';
+import Vector from '@/Nature/Vector';
 
 const BallPaint = () => {
   const pinRef = useRef(

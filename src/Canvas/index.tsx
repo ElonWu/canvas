@@ -14,6 +14,7 @@ const useCanvas = (
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
 
     const { width, height } = options;
 
@@ -27,6 +28,7 @@ const useCanvas = (
     canvas.height = Math.floor(height * scale);
 
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
     ctx.scale(scale, scale);
 
