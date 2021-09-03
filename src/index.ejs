@@ -1,0 +1,30 @@
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+
+    <meta name="keywords" content="<%=
+    htmlWebpackPlugin.options.keywords.join(",") %>" />
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <% for (var opt of htmlWebpackPlugin.options.shareOptions ) { %>
+    <meta property="<%= opt.property %>" content="<%= opt.content %>" />
+    <% } %>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      window.onerror = console.log;
+    </script>
+  </body>
+</html>
