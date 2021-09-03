@@ -35,7 +35,7 @@ class Mover {
 
   // 加速度
   get acceleration(): Vector {
-    return this.totalForce.divide(this.m);
+    return this.totalForce.scale(1 / this.m);
   }
 
   // 重置受力
@@ -60,8 +60,8 @@ class Mover {
   ): void {
     const deltaTime = 1 / this.fps;
 
-    this.velocity.add(this.acceleration.times(deltaTime));
-    this.position.add(this.velocity.times(deltaTime));
+    this.velocity.add(this.acceleration.scale(deltaTime));
+    this.position.add(this.velocity.scale(deltaTime * 1000));
 
     callback(this);
   }
