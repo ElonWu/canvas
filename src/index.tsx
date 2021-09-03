@@ -3,7 +3,8 @@ import * as ReactDOM from 'react-dom';
 
 import './index.css';
 
-import BallPaint from '@/Paints/BallPaint';
+// import BallPaint from '@/Paints/BallPaint';
+import Spring from '@/Paints/Spring';
 
 const App = () => {
   // const [visible, setVisible] = React.useState(false);
@@ -28,10 +29,9 @@ const App = () => {
           borderRadius: 4,
           background: '#fff',
         }}
-        // onClick={() => setVisible(!visible)}
       >
-        {/* {visible && <BouncingBall />} */}
-        <BallPaint />
+        {/* <BallPaint /> */}
+        <Spring />
       </div>
     </div>
   );
