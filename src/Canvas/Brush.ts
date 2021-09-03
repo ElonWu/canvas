@@ -1,3 +1,9 @@
+export interface LinePath {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
 export interface RectPath {
   x: number;
   y: number;
@@ -43,12 +49,14 @@ export interface BrushInterface {
   style: (path: Path2D, options: StyleOptions) => void;
 
   drawPath: (path: string) => Path2D;
+  drawLinePath: (params: LinePath) => Path2D;
   drawRectPath: (params: RectPath) => Path2D;
   drawRoundedRectPath: (params: RoundedRectPath) => Path2D;
   drawArcPath: (params: ArcPath) => Path2D;
   drawCirclePath: (params: CirclePath) => Path2D;
 
   stylePath: (path: string, options: StyleOptions) => void;
+  styleLine: (path: LinePath, options: StyleOptions) => void;
   styleRectPath: (params: RectPath, options: StyleOptions) => void;
   styleRoundedRectPath: (
     params: RoundedRectPath,
@@ -109,6 +117,14 @@ class Brush implements BrushInterface {
     return new Path2D(path);
   }
 
+  public drawLinePath({ x1, y1, x2, y2 }: LinePath): Path2D {
+    return this.drawPath(`
+      M ${x1} ${y1}
+      L ${x2} ${y2}
+      Z
+    `);
+  }
+
   // 绘制 矩形 路径
   public drawRectPath(params: RectPath): Path2D {
     return this.drawRoundedRectPath(Object.assign({ radius: 0 }, params));
@@ -164,6 +180,11 @@ class Brush implements BrushInterface {
    */
   public stylePath(params: string, options: StyleOptions): void {
     const pathToFill: Path2D = this.drawPath(params);
+    this.style(pathToFill, options);
+  }
+
+  public styleLine(params: LinePath, options: StyleOptions): void {
+    const pathToFill: Path2D = this.drawLinePath(params);
     this.style(pathToFill, options);
   }
 
