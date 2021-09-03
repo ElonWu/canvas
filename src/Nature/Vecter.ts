@@ -35,6 +35,18 @@ class Vector {
     this.y /= num;
     return this;
   }
+
+  public combine(vector: Vector): Vector {
+    return new Vector(this.x + vector.x, this.y + vector.y);
+  }
+
+  public diff(vector: Vector): Vector {
+    return new Vector(this.x - vector.x, this.y - vector.y);
+  }
+
+  public scale(num: number): Vector {
+    return new Vector(this.x * num, this.y * num);
+  }
 }
 
 export default Vector;
